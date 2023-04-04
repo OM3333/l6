@@ -1,7 +1,33 @@
 import java.util.AbstractList;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class CustomList<T> extends AbstractList<T> {
+
+    @Override
+    public T get(int i) {
+        Node thisNode = first;
+        for(int k = 0;k<i;++k){
+            if(thisNode != null){
+                thisNode = thisNode.next;
+            }
+            else{
+                throw new NoSuchElementException();
+            }
+        }
+        return thisNode.value;
+    }
+
+    @Override
+    public int size() {
+        Node thisNode = first;
+        int result = 0;
+        while(thisNode != null){
+            thisNode = thisNode.next;
+            result++;
+        }
+        return result;
+    }
 
     private class Node{
         T value = null;
@@ -77,5 +103,30 @@ public class CustomList<T> extends AbstractList<T> {
         newLast.next = null;
         last = newLast;
         return lastValue;
+    }
+
+    @Override
+    public boolean add(T t) {
+        addLast(t);
+        return true;
+    }
+
+    public Iterator<T> iterator(){
+        return new Iterator<T>() {
+            Node currentNode = first;
+
+            @Override
+            public boolean hasNext() {
+                return currentNode != null;
+            }
+
+            @Override
+            public T next() {
+                T value = currentNode.value;
+                currentNode = currentNode.next;
+
+                return value;
+            }
+        };
     }
 }

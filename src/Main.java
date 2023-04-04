@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         CustomList<String> b = new CustomList<>();
@@ -18,20 +21,14 @@ public class Main {
         b.addFirst("a");
         b.addFirst("a");
         b.addFirst("a");
-        b.addFirst("a");
+        b.addFirst("h");
 
-        System.out.println(b.removeFirst());
-        System.out.println(b.removeLast());
-        System.out.println(b.removeLast());
-        System.out.println(b.removeLast());
-        System.out.println(b.removeLast());
-        System.out.println(b.removeLast());
-        System.out.println(b.removeLast());
-        System.out.println(b.removeLast());
-        System.out.println(b.removeLast());
-        System.out.println(b.removeLast());
-        System.out.println(b.removeLast());
-        System.out.println(b.removeLast());
-        System.out.println(b.removeLast());
+        List<String> test1 = new CustomList<>();
+        test1.add("test1");
+        test1.add("test2");
+
+        for(String element: b){
+            System.out.println(element);
+        }
     }
 }
